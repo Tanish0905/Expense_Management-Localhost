@@ -1,11 +1,5 @@
-// if=gnore node modules 
-node_modules
-.
-// ignore .env file
-.env
 
-//ignore  middlewares
-middlewares
+/server/node_modules
+/client/node_modules
 
-//Ds store files
-.DS_Store
+/server/.env

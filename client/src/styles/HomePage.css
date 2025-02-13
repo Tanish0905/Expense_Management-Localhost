@@ -1,0 +1,99 @@
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+
+        /* Styling for the grid container */
+        .grid-container {
+          display: grid;
+          gap: 16px;
+          padding: 16px;
+          width: 100%;
+          max-width: 1200px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          background-color: #e5e5e5;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+
+        /* Box styling for each item */
+        .box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          border-radius: 8px;
+        }
+
+        .salmon {
+          background-color: #f9c2d1;
+        }
+
+        .broccoli {
+          background-color: #d0f0c0;
+        }
+
+        .tamago {
+          background-color: #fef69b;
+        }
+
+        /* Default layout for mobile */
+        @media (max-width: 599px) {
+          .grid-container {
+            grid-template-columns: 1fr;
+          }
+
+          .salmon {
+            grid-column: span 1;
+          }
+
+          .broccoli {
+            grid-column: span 1;
+          }
+
+          .tamago {
+            grid-column: span 1;
+          }
+        }
+
+        /* Tablet layout */
+        @media (min-width: 600px) and (max-width: 1023px) {
+          .grid-container {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .salmon {
+            grid-column: span 2;
+          }
+
+          .broccoli {
+            grid-column: span 1;
+          }
+
+          .tamago {
+            grid-column: span 1;
+          }
+        }
+
+        /* Desktop layout */
+        @media (min-width: 1024px) {
+          .grid-container {
+            grid-template-columns: repeat(12, 1fr);
+          }
+
+          .salmon {
+            grid-column: span 12;
+          }
+
+          .broccoli {
+            grid-column: span 8;
+          }
+
+          .tamago {
+            grid-column: span 4;
+          }
+        }

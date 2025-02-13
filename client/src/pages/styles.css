@@ -1,0 +1,86 @@
+Ensure full-screen layout
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent unwanted scrolling */
+}
+
+/* Container should be 100% width and height */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive grid container */
+.grid-container {
+  display: grid;
+  width: 100%; /* Ensures the grid container takes the full width */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #e5e5e5;
+  gap: 8px;
+  grid-template-columns: 1fr; /* Default 1-column layout for mobile */
+  grid-template-rows: 10fr; /* Full height */
+  margin: 0;
+  padding: 0;
+}
+
+/* Box styling */
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.salmon { background-color: #f9c2d1; }
+.broccoli { background-color: #d0f0c0; }
+.tamago { background-color: #fef69b; }
+
+/* ======= Responsive Grid Layout ======= */
+
+/* 📱 Mobile: Stack items in one column */
+@media (max-width: 599px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column */
+    grid-template-rows: repeat(3, 1fr); /* Equal height */
+  }
+  .salmon { grid-column: span 1; grid-row: span 1; }
+  .broccoli { grid-column: span 1; grid-row: span 1; }
+  .tamago { grid-column: span 1; grid-row: span 1; }
+}
+
+/* 📲 Tablet: Two-column layout */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 10fr; /* Full height */
+  }
+  .salmon { grid-column: span 12; grid-row: span 3; } /* 3fr height */
+  .broccoli { grid-column: span 6; grid-row: span 7; } /* 7fr height */
+  .tamago { grid-column: span 6; grid-row: span 7; } /* 7fr height */
+}
+
+/* 🖥️ Desktop: 12-column layout with full width */
+@media (min-width: 1024px) and (max-width: 5000px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 2fr 8fr; /* Total 10fr height */
+    width: 100%; /* Ensure full width */
+    /* max-width: 100%; Prevent any width constraint */
+    margin: 0;
+    padding: 0;
+  }
+  .salmon { grid-column: span 12; grid-row: span 1; } /* 2fr height */
+  .broccoli { grid-column: span 8; grid-row: span 1; } /* 8fr height */
+  .tamago { grid-column: span 4; grid-row: span 1; } /* 8fr height */
+}
