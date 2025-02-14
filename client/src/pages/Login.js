@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/RegisterPage.css"; // Custom CSS for styling
 
-const Login = () => {
+const Login = () => {  
   const navigate = useNavigate();
   //from submit
   const submitHandler = async (values) => {
     try {
-      const { data } = await axios.post("/users/login", values);
+    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, values);
       message.success("login success");
       localStorage.setItem(
         "user",

@@ -153,7 +153,6 @@ const useStyles = makeStyles( ( theme ) => ( {
   },
 } ) );
 const HomePageDashboard = () => {
-
   const isMobile = useMediaQuery( '(max-width:600px)' );
   const classes = useStyles();
   const [ showAddModal, setShowAddModal ] = useState( false );
@@ -178,11 +177,12 @@ const HomePageDashboard = () => {
   };
 
   useEffect(() => {
-  const getAllTransactions = async () => {
+    const getAllTransactions = async () => {
+
       if ((selectedDate[0] !== null && selectedDate[1] !== null && selectedDate?.length !== 0 && frequency === 'custom') || frequency !=="custom") {
         try {
           const user = JSON.parse( localStorage.getItem( "user" ) );
-          const res = await axios.post( "/transactions/get-transaction", {
+          const res = await axios.post( `${process.env.REACT_APP_API_URL}/transactions/get-transaction`, {
             userid: user._id,
             frequency,
             selectedDate,
@@ -198,9 +198,10 @@ const HomePageDashboard = () => {
   }, [frequency, selectedDate, type,refreshPage]);
 
   //delete handler
-  const handleDelete = async (record) => {
+  const handleDelete = async ( record ) => {
+
     try {
-      await axios.post("/transactions/delete-transaction", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/transactions/delete-transaction`, {
         transacationId: record._id,
       } );
       setRefreshPage(!refreshPage)
@@ -213,9 +214,10 @@ const HomePageDashboard = () => {
   // form handling
   const handleAddSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post("/transactions/add-transaction", {
+        await axios.post(`${process.env.REACT_APP_API_URL}/transactions/add-transaction`, {
           ...formValues,
           userid: user._id,
         });
@@ -230,10 +232,11 @@ const HomePageDashboard = () => {
   };
 
    const handleEditSubmit = async (event) => {
-    event.preventDefault();
+     event.preventDefault();
+
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post("/transactions/edit-transaction", {
+        await axios.post(`${process.env.REACT_APP_API_URL}/transactions/edit-transaction`, {
           payload: {
             ...formValues,
             userId: user._id,

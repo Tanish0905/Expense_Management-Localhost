@@ -5,12 +5,13 @@ import axios from "axios";
 import "../styles/RegisterPage.css"; // Custom CSS for styling
 
 const Register = () => {
+
   const navigate = useNavigate();
 
   // Handle form submission
   const submitHandler = async (values) => {
     try {
-      await axios.post("/users/register", values);
+      await axios.post(`${process.env.REACT_APP_API_URL}/users/register`, values);
       message.success("Registration Successful");
       navigate("/login");
     } catch (error) {

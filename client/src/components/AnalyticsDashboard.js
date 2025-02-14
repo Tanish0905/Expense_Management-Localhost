@@ -8,6 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const AnalyticsDashboard = ({ allTransaction }) => {
   const [selectedOption, setSelectedOption] = useState("Income");
 
+
   const categories = [
     "Food",
     "Shopping",

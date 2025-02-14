@@ -1,5 +1,5 @@
 {
-  "proxy": "https://expense-management-backend-t7yc.onrender.com" ,
+  "proxy":"https://expense-management-backend-t7yc.onrender.com",
   "name": "client",
   "version": "0.1.0",
   "private": true,

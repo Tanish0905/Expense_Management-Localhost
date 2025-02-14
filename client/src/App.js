@@ -1,7 +1,3 @@
-// install packages i reacct app i.e. expenseman.../client > npm i axios react-router-dom redux react react-redux
-// npm i antd  library used in ui for design ( name :- ant design)
-//check package.json file of client folder 
-
 import React from 'react';
 import { Route, Routes , Navigate } from "react-router-dom";
 

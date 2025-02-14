@@ -23,12 +23,21 @@ app.use(cors());
 // user routes
 app.use('/api/v1/users',require("./routes/userRoute"));
 
-
 //transaction routes
 app.use('/api/v1/transactions',require("./routes/transactionRoutes"));
+app.get("/", (req, res) => {
+  res.send("Welcome to Expense Management API!");
+});
+
+//static files
+// app.use( express.static( path.join( __dirname, './client/build' ) ) );
+
+// app.get( '*', function ( req, res ) {
+//    res.sendFile(path.join(__dirname,'./client/build/index.html'))
+// })
 
  //  port
- const port= 8080 || process.env.PORT;
+ const port= process.env.PORT;
 
  //listen
  app.listen(port,()=>{
