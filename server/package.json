@@ -1,14 +1,13 @@
 {
-  "name": "expense-management-system",
+  "name": "server",
   "version": "1.0.0",
   "description": "Expense tracker app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "Tanish Padvekar",
