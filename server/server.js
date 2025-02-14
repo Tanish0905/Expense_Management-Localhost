@@ -1,15 +1,8 @@
-// npm init -y , npm i express , mongoose , npm inpm i , npm i  morgan 
-// , npm i dotenv , nodemon , cors , bodyparser 
-//npm i moment  to deal with dates
-// npm i concurrently this is for running two servers on one command
-
-
 //npm run dev is cmnd in this program to run both client and server side 
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 const dotenv = require("dotenv")
-const colors = require("colors")
 const connectDb = require("./config/connectDb");
 
 // config dotenv file
@@ -36,8 +29,6 @@ app.use('/api/v1/transactions',require("./routes/transactionRoutes"));
 
  //  port
  const port= 8080 || process.env.PORT;
-
- // add this to client>package.json   "proxy": "http://localhost:8080/api/vi",
 
  //listen
  app.listen(port,()=>{
