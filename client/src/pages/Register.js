@@ -14,8 +14,8 @@ const Register = () => {
       await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/users/register`, values);
       message.success("Registration Successful");
       navigate("/login");
-    } catch (error) {
-      message.error("Something went wrong");
+    } catch ( error ) {
+      message.error(error?.response?.data?.error || "Something went wrong");
     }
   };
 
