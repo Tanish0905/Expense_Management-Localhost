@@ -33,16 +33,27 @@ const loginController = async (req, res) => {
 };
 
 // Register callback
+// Register callback
 const registerController = async (req, res) => {
   try {
-    const { password, ...rest } = req.body;
+    const { email, password, ...rest } = req.body;
+
+    // Check if the email is already registered
+    const existingUser = await userModel.findOne({ email });
+
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        error: "Email is already registered",
+      });
+    }
 
     // Hash the password before saving it
-    const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;  // Retrieve salt rounds from .env file, default to 10
+    const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create new user with hashed password
-    const newUser = new userModel({ ...rest, password: hashedPassword });
+    const newUser = new userModel({ ...rest, email, password: hashedPassword });
     await newUser.save();
 
     res.status(201).json({
@@ -50,11 +61,19 @@ const registerController = async (req, res) => {
       newUser,
     });
   } catch (error) {
+    console.error("Registration Error:", error); // Log error for debugging
+    if (error.code === 11000) {  // MongoDB duplicate error code
+      return res.status(400).json({
+        success: false,
+        error: "Email is already registered",
+      });
+    }
     res.status(400).json({
       success: false,
-      error: error.message,
+      error: error.message || error,
     });
   }
 };
+
 
 module.exports = { loginController, registerController };
