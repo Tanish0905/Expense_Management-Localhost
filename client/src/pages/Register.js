@@ -11,7 +11,7 @@ const Register = () => {
   // Handle form submission
   const submitHandler = async (values) => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/users/register`, values);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/users/register`, values);
       message.success("Registration Successful");
       navigate("/login");
     } catch (error) {

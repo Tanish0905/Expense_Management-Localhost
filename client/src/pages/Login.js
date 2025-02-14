@@ -9,7 +9,7 @@ const Login = () => {
   //from submit
   const submitHandler = async (values) => {
     try {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, values);
+    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, values);
       message.success("login success");
       localStorage.setItem(
         "user",

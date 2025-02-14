@@ -182,7 +182,7 @@ const HomePageDashboard = () => {
       if ((selectedDate[0] !== null && selectedDate[1] !== null && selectedDate?.length !== 0 && frequency === 'custom') || frequency !=="custom") {
         try {
           const user = JSON.parse( localStorage.getItem( "user" ) );
-          const res = await axios.post( `${process.env.REACT_APP_API_URL}/transactions/get-transaction`, {
+          const res = await axios.post( `${process.env.REACT_APP_API_URL}/api/v1/transactions/get-transaction`, {
             userid: user._id,
             frequency,
             selectedDate,
@@ -201,7 +201,7 @@ const HomePageDashboard = () => {
   const handleDelete = async ( record ) => {
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/transactions/delete-transaction`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/transactions/delete-transaction`, {
         transacationId: record._id,
       } );
       setRefreshPage(!refreshPage)
@@ -217,7 +217,7 @@ const HomePageDashboard = () => {
 
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post(`${process.env.REACT_APP_API_URL}/transactions/add-transaction`, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/transactions/add-transaction`, {
           ...formValues,
           userid: user._id,
         });
@@ -236,7 +236,7 @@ const HomePageDashboard = () => {
 
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post(`${process.env.REACT_APP_API_URL}/transactions/edit-transaction`, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/transactions/edit-transaction`, {
           payload: {
             ...formValues,
             userId: user._id,
